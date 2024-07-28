@@ -1,0 +1,240 @@
+/*
+File: rockpaper.css
+Description: Styles for Rock Paper Scissors Lizard Spock game
+Author: Gabriela Moniz
+Date: March 4, 2023
+*/
+
+/* Default margin, padding, and box-sizing for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* padding and border are included in the element's total width and height */
+}
+
+/* body of the page */
+body {
+    background-color: #000; 
+    font-family: 'Lucida Sans', sans-serif; 
+    color: white; 
+    display: flex; /*  flexbox layout */
+    flex-direction: column; /* child elements in a column */
+    align-items: center; /* child elements centered horizontally */
+    justify-content: center; /* child elements centered vertically */
+    min-height: 100vh; /* body takes the full height of the viewport */
+    padding: 0; /* default padding removed*/
+    margin: 0; /* default margin removed */
+    position: relative; /* relative position for proper footer positioning */
+}
+
+/* header with a red background and centered text */
+header {
+    background: #ff0000; 
+    padding: 10px; 
+    width: 100%; /* header full width */
+    position: fixed; /* header to the top of the viewport */
+    top: 0; 
+    left: 0; 
+    z-index: 1; /* header will appear above other content */
+}
+
+/* main header title */
+header > h1 {
+    color: white; 
+    text-align: center; 
+    font-family: 'Lucida Sans', sans-serif; 
+    font-size: 3vw; /* font size relative to viewport width */
+}
+
+/* action message */
+#action-msg {
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 3vw; 
+    margin: 3px 0;
+}
+
+/* container for option images */
+.options {
+    margin-top: 30px; /* add top margin to position below the header */
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    flex-wrap: wrap; 
+    gap: 10px; 
+}
+
+/* individual option elements */
+.option {
+    cursor: pointer; /* show pointer cursor on hover */
+    transition: transform 0.3s, border 0.3s; /* animate transform and border changes */
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+}
+
+/* images within option elements */
+.option img {
+    width: 100px; 
+    height: 100px; 
+    object-fit: cover; /* image covers the container while maintaining aspect ratio */
+    border-radius: 5px; /* rounded corners to images */
+    transition: border 0.3s; /* animate border changes */
+}
+
+/* scaling effect on hover */
+.option:hover {
+    transform: scale(1.1); /* enlarge the element when hovered */
+}
+
+/* red border to the image when clicked */
+.option:active img {
+    border: 5px solid #ff0000; /* red border around the image when the option is clicked */
+}
+
+/* the score table */
+.score-table {
+    margin: 20px auto; 
+    border: 5px solid #ff0000; /* red border around the table */
+    width: auto; /* width to auto for responsiveness */
+    min-width: 150px; 
+    height: auto; /* height to auto for responsiveness */
+    color: white; 
+    font-size: 3vw; /* font size relative to viewport width */
+    border-radius: 10px; 
+    text-align: center; 
+    padding: 10px 15px; 
+    font-family: 'Lucida Sans', sans-serif; 
+    position: relative; 
+}
+
+/* user and computer labels */
+.tag {
+    background: #ff0000; 
+    font-size: 2vw; 
+    font-weight: bold; 
+    color: white; 
+    border-radius: 5px; 
+    padding: 5px 10px; 
+    font-family: 'Lucida Sans', sans-serif; 
+    position: absolute; 
+}
+
+/* user label on the left of the score table */
+#user-label {
+    top: 50%; /* vertically center the label */
+    left: -120px; /* position to the left of the score table */
+    transform: translateY(-50%); /* label vertically centered*/
+}
+
+/* label to the right of the score table */
+#computer-label {
+    top: 50%; 
+    right: -150px; /* position to the right of the score table */
+    transform: translateY(-50%); 
+}
+
+/* result display  */
+.result {
+    font-size: 3vw; 
+    color: white;
+    margin-top: 20px;
+}
+
+/* result paragraph */
+.result > p {
+    text-align: center;
+    font-weight: bold;
+    font-family: 'Lucida Sans', sans-serif;
+    font-size: 3vw; 
+}
+
+/*  footer */
+footer {
+    position: absolute; 
+    bottom: 0; 
+    left: 0; 
+    width: 100%; /* footer full width */
+    padding: 10px; 
+    background-color: #ff0000; 
+    color: white; 
+    text-align: center; 
+    font-family: 'Lucida Sans', sans-serif; 
+    font-size: 2vw; 
+    border-radius: 5px; 
+    box-sizing: border-box; 
+}
+
+/* restart button container */
+.restart-button-container {
+    margin-top: 20px; 
+    text-align: center; 
+}
+
+/* restart button */
+.restart-button {
+    background-color: #ff0000; 
+    color: white; 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 50px;
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    font-family: 'Lucida Sans', sans-serif; 
+    font-size: 1em; 
+    cursor: pointer; /* pointer cursor on hover */
+    transition: background-color 0.3s; /* background color transition */
+}
+.restart-icon {
+    font-size: 1.5em; 
+    margin-right: 10px;
+}
+.button-text {
+    font-size: 1em;
+}
+.restart-button:hover {
+    background-color: #cc0000; /* darker red when hovered */
+}
+
+/* screens up to 768px wide */
+@media (max-width: 768px) {
+    header > h1, #action-msg, .score-table, .result {
+        font-size: 6vw; 
+    }
+
+    .option img {
+        width: 60px; 
+        height: 60px; 
+    }
+
+    .tag {
+        font-size: 3vw; 
+    }
+
+    footer {
+        font-size: 3vw; 
+    }
+}
+
+/* screens up to 480px wide */
+@media (max-width: 480px) {
+    .option img {
+        width: 50px; 
+        height: 50px; 
+    }
+
+    .score-table {
+        padding: 5px 10px; 
+    }
+
+    .tag {
+        font-size: 3vw; 
+        margin: 0 5px; 
+    }
+
+    footer {
+        font-size: 4vw; 
+    }
+}
